@@ -12,7 +12,6 @@ function loadEnv() {
         : process.env.NODE_ENV === 'dev'
             ? '.env.dev'
             : '.env';
-    console.log(path);
     const currentEnvs = dotenv_1.default.config({ path });
     dotenv_expand_1.default.expand(currentEnvs);
 }
