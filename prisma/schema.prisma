@@ -17,8 +17,18 @@ model User {
 
   Credential Credential[]
   Network    Network[]
+  Session    Session[]
 
   @@map("users")
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Credential {
