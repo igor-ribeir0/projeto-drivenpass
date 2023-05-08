@@ -9,15 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.disconnectDB = exports.connectDb = exports.prisma = void 0;
-const client_1 = require("@prisma/client");
-function connectDb() {
-    exports.prisma = new client_1.PrismaClient();
-}
-exports.connectDb = connectDb;
-function disconnectDB() {
+const database_1 = require("../../config/database");
+function findByEmail(email) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield (exports.prisma === null || exports.prisma === void 0 ? void 0 : exports.prisma.$disconnect());
+        const findEmail = yield database_1.prisma.user.findFirst({
+            where: { email }
+        });
+        return findEmail;
     });
 }
-exports.disconnectDB = disconnectDB;
+;
+function create(email, password) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield database_1.prisma.user.create({
+            data: {
+                email,
+                password
+            }
+        });
+    });
+}
+;
+const userRepository = {
+    findByEmail,
+    create
+};
+exports.default = userRepository;

@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node dist/server.js",
+    "test": "cross-env NODE_ENV=test jest --passWithNoTests --runInBand",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --passWithNoTests --runInBand",
+    "test:coverage": "cross-env NODE_ENV=test jest --passWithNoTests --runInBand --coverage --collectCoverageFrom='./src/**'",
     "test:load-envs": "dotenv -e .env.test",
     "test:migration:run": "npm run test:load-envs prisma migrate deploy",
     "dev:migration:generate": "npm run dev:load-envs prisma migrate dev",
@@ -15,6 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
     "@types/jsonwebtoken": "^9.0.2",
@@ -35,6 +39,11 @@
   "devDependencies": {
     "@prisma/client": "^4.13.0",
     "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.1",
+    "@types/supertest": "^2.0.12",
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.4"

@@ -9,15 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.disconnectDB = exports.connectDb = exports.prisma = void 0;
-const client_1 = require("@prisma/client");
-function connectDb() {
-    exports.prisma = new client_1.PrismaClient();
-}
-exports.connectDb = connectDb;
-function disconnectDB() {
+const database_1 = require("../../config/database");
+function create(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield (exports.prisma === null || exports.prisma === void 0 ? void 0 : exports.prisma.$disconnect());
+        return database_1.prisma.session.create({ data });
     });
 }
-exports.disconnectDB = disconnectDB;
+;
+const sessionRepository = {
+    create,
+};
+exports.default = sessionRepository;

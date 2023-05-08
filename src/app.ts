@@ -2,6 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import cors from "cors";
 import { loadEnv } from "./config/envs";
+import { connectDb, disconnectDB } from "./config/database";
 
 loadEnv();
 
@@ -12,5 +13,14 @@ app
   .use(cors())
   .use(express.json())
   .use('/users', userRouter)
+
+export function init() {
+  connectDb();
+  return Promise.resolve(app);
+};
+  
+export async function close(): Promise<void> {
+  await disconnectDB();
+};
 
 export default app;

@@ -1,4 +1,4 @@
-import prisma from "../../config/database";
+import { prisma } from "../../config/database";
 
 async function findByEmail(email: string) {
     const findEmail = await prisma.user.findFirst({
@@ -11,8 +11,8 @@ async function findByEmail(email: string) {
 async function create(email: string, password: string) {
     await prisma.user.create({
         data:{
-            email,
-            password
+            email: email,
+            password: password
         }
     })
 };
