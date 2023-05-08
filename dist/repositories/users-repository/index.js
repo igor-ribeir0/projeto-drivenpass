@@ -23,8 +23,8 @@ function create(email, password) {
     return __awaiter(this, void 0, void 0, function* () {
         yield database_1.prisma.user.create({
             data: {
-                email,
-                password
+                email: email,
+                password: password
             }
         });
     });
