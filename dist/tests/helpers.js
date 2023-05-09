@@ -9,13 +9,12 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const users_factory_1 = require("./factories/users-factory");
 const sessions_factory_1 = require("./factories/sessions-factory");
 async function cleanDb() {
-    await database_1.prisma.user.deleteMany({});
     await database_1.prisma.session.deleteMany({});
     await database_1.prisma.credential.deleteMany({});
     await database_1.prisma.network.deleteMany({});
+    await database_1.prisma.user.deleteMany({});
 }
 exports.cleanDb = cleanDb;
-;
 async function generateToken(user) {
     const incomingUser = user || (await (0, users_factory_1.createUser)());
     const token = jsonwebtoken_1.default.sign({ userId: incomingUser.id }, "top_secret");

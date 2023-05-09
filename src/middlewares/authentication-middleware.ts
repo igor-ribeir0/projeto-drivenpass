@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import { prisma } from "../config/database";
 import jwt from 'jsonwebtoken';
 import httpStatus from 'http-status';
