@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/controllers/users-controller.ts</title>
+    <title>Code coverage report for src/middlewares/authentication-middleware.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/controllers</a> users-controller.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/middlewares</a> authentication-middleware.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/18</span>
+                <span class='fraction'>19/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/18</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -103,77 +103,77 @@
 <a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Request, Response } from 'express';
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NextFunction, Request, Response } from "express";
+import { prisma } from "../config/database";
+import jwt from 'jsonwebtoken';
 import httpStatus from 'http-status';
-import userService from "../services/users-service";
-import { SignInParams } from "../services/users-service";
+import { unauthorizedError } from "../errors/unauthorized-error";
 &nbsp;
-export async function createUser(req: Request, res: Response) {
-    const { email, password } = req.body;
+export async function authToken(req: any, res: Response, next: NextFunction) {
+  const authHeader = req.header('Authorization');
+  if (!authHeader) return UnauthorizedUser(res);
   
-    try {
-      await userService.createUser({ email, password });
-&nbsp;
-      return res.sendStatus(httpStatus.CREATED);
-    } 
-    catch (error: any) {
-      if (error.name === 'DuplicatedEmailError') {
-        return res.status(httpStatus.CONFLICT).send(error);
-      }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >      return res.status(httpStatus.BAD_REQUEST).send(error);</span>
-    }
+  const token = authHeader.split(' ')[1];
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!token) <span class="cstat-no" title="statement not covered" >return UnauthorizedUser(res);</span>
+  
+  try {
+    const { userId } = jwt.verify(token, "top_secret") as JWTPack;
+  
+    const session = await prisma.session.findFirst({
+      where: {
+        token,
+      },
+    });
+    if (!session) return UnauthorizedUser(res);
+  
+    req.userId = userId;
+  
+    return next();
+  } catch (err) {
+    return UnauthorizedUser(res);
+  }
 };
-&nbsp;
-export async function searchUser(req: Request, res: Response){
-  const { email, password } = req.body as SignInParams;
-&nbsp;
-  try{
-    const searchResult = await userService.searchUser({ email, password });
-&nbsp;
-    return res.status(httpStatus.OK).send(searchResult);
-  }
-  catch(error: any){
-    if(error.name === "InvalidEmailPasswordError"){
-      return res.status(httpStatus.UNAUTHORIZED).send(error);
-    }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    return res.status(httpStatus.BAD_REQUEST).send(error);</span>
-  }
+  
+function UnauthorizedUser(res: Response) {
+    res.status(httpStatus.UNAUTHORIZED).send(unauthorizedError());
+};
+  
+type JWTPack = {
+  userId: number;
 };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
