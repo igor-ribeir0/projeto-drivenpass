@@ -1,21 +1,20 @@
 import { prisma } from "../../src/config/database";
+import { Network, User } from "@prisma/client";
 import { faker } from "@faker-js/faker";
-import { User, Credential} from "@prisma/client";
 import { createUser } from "./users-factory";
 import { cryptographyUtil } from "../../src/utils/cryptographyUtil-utils";
 
-export async function createCredential(user?: User): Promise<Credential> {
+export async function createWiFi(user?: User): Promise<Network> {
   const creatingUser = user || (await createUser());
 
   const password = cryptographyUtil.encrypt(faker.internet.password(10));
 
-  return prisma.credential.create({
+  return prisma.network.create({
     data: {
       title: faker.lorem.sentence(),
-      url: faker.internet.url(),
-      username: faker.internet.userName(),
+      network: faker.lorem.sentence(),
       password: password,
       userId: creatingUser.id,
     },
   });
-}
+};

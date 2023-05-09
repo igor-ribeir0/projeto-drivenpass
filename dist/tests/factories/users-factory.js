@@ -8,8 +8,8 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const faker_1 = require("@faker-js/faker");
 const database_1 = require("../../src/config/database");
 async function createUser(params = {}) {
-    const incomingPassword = params.password || faker_1.faker.internet.password(6);
-    const hashedPassword = await bcrypt_1.default.hash(incomingPassword, 10);
+    const creatingPassword = params.password || faker_1.faker.internet.password(6);
+    const hashedPassword = await bcrypt_1.default.hash(creatingPassword, 10);
     return database_1.prisma.user.create({
         data: {
             email: params.email || faker_1.faker.internet.email(),
